@@ -1,21 +1,22 @@
-/* Importamos la fuente profesional Inter desde Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+/* Importamos Inter (lectura) y Space Grotesk (toque tecnológico) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap");
 
 /* =========================================
-   VARIABLES GLOBALES (Paleta Sofisticada)
+   VARIABLES GLOBALES (Paleta Dark Tech)
    ========================================= */
 :root {
-  --bg-color: #f8fafc; /* Fondo claro y limpio */
-  --text-primary: #1e293b; /* Texto oscuro con buen contraste */
-  --text-secondary: #30353b; /* Texto secundario para el cuerpo de la noticia */
-  --accent-color: #2563eb; /* Azul corporativo de acento */
-  --accent-hover: #1d4ed8; /* Azul más oscuro para el hover del botón */
-  --card-bg: #ffffff;
-  --border-radius: 12px;
-  --shadow-sm:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-hover:
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --bg-color: #0f172a; /* Fondo principal oscuro (Slate 900) */
+  --card-bg: #1e293b; /* Fondo de tarjeta (Slate 800) */
+  --text-primary: #f8fafc; /* Texto principal blanco hueso */
+  --text-secondary: #94a3b8; /* Texto secundario grisáceo */
+  --accent-color: #8b5cf6; /* Morado eléctrico */
+  --accent-hover: #7c3aed; /* Morado eléctrico más intenso */
+  --tech-cyan: #38bdf8; /* Azul cyan para etiquetas */
+  --border-radius: 16px;
+  /* Resplandor neón para el hover de las tarjetas */
+  --neon-glow:
+    0 10px 25px -5px rgba(139, 92, 246, 0.3),
+    0 8px 10px -6px rgba(139, 92, 246, 0.2);
 }
 
 /* =========================================
@@ -52,14 +53,13 @@ body {
 }
 
 /* =========================================
-   HEADER CORPORATIVO (Actualizado con Gradiente)
+   HEADER TECH
    ========================================= */
 .header {
-  /* Gradiente moderno: va de un azul profundo a un azul brillante */
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   padding: 1.25rem 2rem;
-  /* Hacemos la sombra un poquito más pronunciada para que resalte */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,143 +69,91 @@ body {
 }
 
 .logo-title {
-  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #ffffff; /* Cambiamos a blanco para contrastar con el fondo oscuro */
+  /* Efecto de texto con gradiente tecnológico */
+  background: linear-gradient(to right, var(--tech-cyan), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   letter-spacing: -0.5px;
 }
 
 .badge-live {
-  /* Fondo blanco semi-transparente para que se fusione con el gradiente */
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff; /* Texto en blanco */
+  font-family: "Space Grotesk", sans-serif;
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #34d399; /* Verde esmeralda */
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-/* El .punto-rojo se mantiene igual, no necesitas cambiarlo */
-
-/* =========================================
-   GRID RESPONSIVO (ListaNoticias)
-   ========================================= */
-.grid-noticias {
-  display: grid;
-  /* Esto crea columnas que se adaptan automáticamente al tamaño de la pantalla */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-/* =========================================
-   TARJETAS DE NOTICIAS (.card)
-   ========================================= */
-.card {
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-  /* Transición suave para el efecto de elevación */
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Efecto hover suave de elevación */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
-}
-
-.noticia-titulo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-  text-transform: capitalize; /* Convierte la primera letra en mayúscula */
-  line-height: 1.3;
-}
-
-.noticia-cuerpo {
-  color: var(--text-secondary);
-  margin-bottom: 1.5rem;
-  flex-grow: 1; /* Empuja el botón siempre hacia abajo */
-}
-
-/* =========================================
-   BOTÓN DE INTERACCIÓN
-   ========================================= */
-.btn-interaccion {
-  background-color: var(--accent-color);
-  color: #ffffff;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  align-self: flex-start;
-}
-
-.btn-interaccion:hover {
-  background-color: var(--accent-hover);
-}
-
-/* =========================================
-   EFECTOS DEL HEADER (Punto animado y Cristal)
-   ========================================= */
-.header {
-  /* Modificamos el fondo para que tenga un efecto cristal/transparente */
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-}
-
-.badge-live {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* Espacio entre el punto y el texto */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .punto-rojo {
   width: 8px;
   height: 8px;
-  background-color: #ef4444; /* Rojo alerta */
+  background-color: #10b981; /* Cambiamos el rojo por verde "Sistema Online" */
   border-radius: 50%;
-  animation: latido 1.5s infinite; /* Animación continua */
+  animation: latido-tech 2s infinite;
 }
 
-/* Animación del parpadeo/latido */
-@keyframes latido {
+@keyframes latido-tech {
   0% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }
 
 /* =========================================
-   NUEVOS ESTILOS DE LA TARJETA
+   GRID RESPONSIVO
+   ========================================= */
+.grid-noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* =========================================
+   TARJETAS DE NOTICIAS
    ========================================= */
 .card {
-  padding: 0; /* IMPORTANTE: Asegúrate de poner el padding en 0 aquí */
-  overflow: hidden; /* Corta la imagen para que respete los bordes redondeados */
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--neon-glow);
+  border-color: rgba(139, 92, 246, 0.4); /* El borde se ilumina */
 }
 
 .card-imagen {
   width: 100%;
   height: 180px;
-  object-fit: cover; /* Evita que la imagen se estire feo */
-  border-bottom: 1px solid #e2e8f0;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  /* Un filtro opcional para que la imagen se vea más fría/tecnológica */
+  filter: contrast(1.1) saturate(0.9);
 }
 
 .card-contenido {
@@ -217,12 +165,59 @@ body {
 
 .card-etiqueta {
   align-self: flex-start;
-  background-color: #e0e7ff;
-  color: var(--accent-color);
-  font-size: 0.75rem;
+  font-family: "Space Grotesk", sans-serif;
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--tech-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
   text-transform: uppercase;
+  letter-spacing: 1px;
   margin-bottom: 1rem;
+}
+
+.noticia-titulo {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  line-height: 1.3;
+}
+
+.noticia-cuerpo {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   BOTÓN DE INTERACCIÓN
+   ========================================= */
+.btn-interaccion {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+  align-self: flex-start;
+}
+
+.btn-interaccion:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn-interaccion:active {
+  transform: scale(0.97); /* Pequeño efecto al hacer clic */
 }
