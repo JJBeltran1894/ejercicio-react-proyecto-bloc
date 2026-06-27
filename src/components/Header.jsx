@@ -5,7 +5,9 @@ function Header() {
         <h1 className="logo-title">📰 Bloc de Noticias</h1>
       </div>
       <div className="header-tools">
-        <span className="badge-live">Actualizado al momento</span>
+        <span className="badge-live">
+          <span className="punto-rojo"></span> Actualizado al momento
+        </span>
       </div>
     </header>
   );

@@ -7,7 +7,7 @@
 :root {
   --bg-color: #f8fafc; /* Fondo claro y limpio */
   --text-primary: #1e293b; /* Texto oscuro con buen contraste */
-  --text-secondary: #475569; /* Texto secundario para el cuerpo de la noticia */
+  --text-secondary: #30353b; /* Texto secundario para el cuerpo de la noticia */
   --accent-color: #2563eb; /* Azul corporativo de acento */
   --accent-hover: #1d4ed8; /* Azul más oscuro para el hover del botón */
   --card-bg: #ffffff;
@@ -52,12 +52,14 @@ body {
 }
 
 /* =========================================
-   HEADER CORPORATIVO
+   HEADER CORPORATIVO (Actualizado con Gradiente)
    ========================================= */
 .header {
-  background-color: var(--card-bg);
+  /* Gradiente moderno: va de un azul profundo a un azul brillante */
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   padding: 1.25rem 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Hacemos la sombra un poquito más pronunciada para que resalte */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,18 +71,24 @@ body {
 .logo-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #ffffff; /* Cambiamos a blanco para contrastar con el fondo oscuro */
   letter-spacing: -0.5px;
 }
 
 .badge-live {
-  background-color: #e2e8f0;
-  color: var(--text-secondary);
+  /* Fondo blanco semi-transparente para que se fusione con el gradiente */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff; /* Texto en blanco */
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   font-size: 0.85rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+/* El .punto-rojo se mantiene igual, no necesitas cambiarlo */
 
 /* =========================================
    GRID RESPONSIVO (ListaNoticias)
@@ -110,7 +118,7 @@ body {
 
 /* Efecto hover suave de elevación */
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-hover);
 }
 
@@ -147,4 +155,74 @@ body {
 
 .btn-interaccion:hover {
   background-color: var(--accent-hover);
+}
+
+/* =========================================
+   EFECTOS DEL HEADER (Punto animado y Cristal)
+   ========================================= */
+.header {
+  /* Modificamos el fondo para que tenga un efecto cristal/transparente */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.badge-live {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el punto y el texto */
+}
+
+.punto-rojo {
+  width: 8px;
+  height: 8px;
+  background-color: #ef4444; /* Rojo alerta */
+  border-radius: 50%;
+  animation: latido 1.5s infinite; /* Animación continua */
+}
+
+/* Animación del parpadeo/latido */
+@keyframes latido {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* =========================================
+   NUEVOS ESTILOS DE LA TARJETA
+   ========================================= */
+.card {
+  padding: 0; /* IMPORTANTE: Asegúrate de poner el padding en 0 aquí */
+  overflow: hidden; /* Corta la imagen para que respete los bordes redondeados */
+}
+
+.card-imagen {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Evita que la imagen se estire feo */
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.card-contenido {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-etiqueta {
+  align-self: flex-start;
+  background-color: #e0e7ff;
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }

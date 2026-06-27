@@ -12,7 +12,7 @@ function ListaNoticias() {
   }, []);
 
   return (
-    <div classname="grid-noticias">
+    <div className="grid-noticias">
       {noticias.map((noticia) => (
         <TarjetaNoticia key={noticia.id} info={noticia} />
       ))}
